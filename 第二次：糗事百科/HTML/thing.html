@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>糗事百科</title>
+	<script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+    body {
+        font-size: 14px;
+        font-family:"PingFang SC","Helvetica Neue","Microsoft YaHei",Arial,sans-serif;
+        background-color: #F7F7F7;
+    }
+    body,html,div,a,ul,li,p,span,img,h3,h2 {
+    	padding: 0;
+    	margin: 0;
+    }
+    .header {
+    	width: 100%;
+    	height: 82px;
+    	background-color: #ffd52b;	
+    }
+    .header-bar,.content {
+    	width: 980px;
+    	margin: 0 auto;
+    }
+    .header-bar {
+    	height: 80px;
+    }
+    .bar-img,.bar-middle,.bar-right {
+        float: left;
+    }
+    .bar-img {
+    	display:inline-block;
+    }
+    .bar-img a {
+    	display: block;
+    	width: 211px;
+        height: 80px;
+    }
+    .bar-middle {
+    	width: 590px;
+    	height: 80px;
+    }
+    .bar-right {
+    	width: 168px;
+    	height: 80px;
+    }
+    .clearfix::after {
+        display: block;
+        content: "";
+        clear: both;
+        height: 0;
+    }
+    .header-bar ul {
+    	list-style: none;
+    }
+    .change-page {
+    	height: 78px;
+    	background-color:#fee36e;
+    	border-bottom:4px solid #7A4624;
+    }
+    .header-bar ul li {
+    	float: left;
+    	margin: 0 1px;
+    }
+    .header-bar ul li a {
+    	display: block;
+    	line-height: 82px;
+    	color: #7a4624; 
+    	padding: 0 15px 0 15px;
+    	font-size: 16px;
+    	font-weight: 30px;
+        text-decoration: none;
+    }
+    .header-bar ul li:hover {
+    	background-color: #fee36e;
+    }
+    .bar-right a {
+    	display: block;
+    	float: right;
+    	line-height: 82px;
+    	color: #7a4624; 
+    	font-size: 16px;
+        text-decoration: none;
+    }
+    .content {
+    	margin-top:10px;
+    }
+    .content-left,.content-right {
+    	float: left;
+    }
+    .content-left {
+    	width:660px;		
+    }
+    .content-left>div {
+    	width: 620px;
+    	background-color: #FFFFFF;
+    	margin-top: 10px;
+    	padding: 0 10px 0 12px;
+    }
+    .content-right {
+    	position: absolute;
+    	right: 194px;
+    	width: 315px;
+    	margin-top: 10px;
+    }
+    .discuss-text {
+        width: 600px;
+        height: 40px;
+        padding-top: 20px;    
+    }
+    .discuss-text pre {
+    	color: #9B889B;
+    }
+    .discuss-text a,.boy-age,.girl-age {
+    	display: inline-block;
+    	float: left;
+    	text-decoration: none;
+    	color: #9B889B;
+    	height: 35px;
+    	margin-left: 10px;
+    }
+    .discuss-img {
+    	width: 40px;
+    	height: 40px;
+    	border-radius: 50%;
+    }
+    .discuss-text h3{
+        position: relative;
+        top: 10px;
+        font-size: 14px;
+    }
+    .girl-age {
+        background-image: url("../image/boy.png");
+    }
+    .boy-age {
+    	background-image: url("../image/girl.png");
+    }
+    .boy-age,.girl-age {
+    	display: block;
+    	margin-top: 12px;
+    	width:20px;
+    	height:17px;
+    	font-size: 8px;
+    	color:#FFFFFF;
+    	padding-left:20px;
+    	background-size: cover;
+    	background-position: 0 0;
+        background-repeat: no-repeat; 	
+    }
+    .discuss-say {
+    	width: 600px;
+        margin: 10px 0 20px 10px;  
+    }
+    .forall {
+    	display: inline-block;
+    	width: 70px;
+    	margin-top: 6px;
+    	text-align: center;
+    	border: 1px solid #FFBB00;
+    }
+    .discuss-say>a {
+        text-decoration: none;
+        color: #000;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .discuss-say a pre {
+    	line-height: 28px;
+        font-size: 16px;
+    }
+    .discuss-say a img {
+    	width: 600px;
+    }
+    .discuss-joke {
+        width: 600px;
+        height: 30px;
+        margin: 10px 0 0 10px;
+        color: #8f8f8f;
+    } 
+    .discuss-joke a {
+    	text-decoration: none;
+    	color: #8f8f8f;
+    }
+    .discuss-joke a:hover {
+    	text-decoration: underline;
+    	color: #000;
+    }
+    .discuss-face {
+    	width: 600px;
+    	height: 40px;
+    }
+    .discuss-face div {
+    	width: 290px;
+    	height: 40px;
+    	display: inline-block;
+    }
+    .discuss-face ul {
+    	list-style: none;
+    	display: inline-block;
+    }
+    .discuss-face ul li {
+    	float: left;
+    }
+    .face-left,.face-middle,.face-right {
+    	width: 30px;
+    	height: 28px;
+    	background-image: url("../image/icongroup.png");
+    	background-repeat: no-repeat;
+    }
+    .face-left {
+    	background-position:5px -196px;
+    }
+    .face-middle {
+        background-position:5px -220px;
+    }
+    .face-right {
+        background-position:5px -172px;
+    }
+    .face-left a,.face-middle a,.face-right a {
+    	display: block;
+    	width: 30px;
+    	height: 28px;
+    }
+    .talk-wechat,.talk-qq,.talk-microblog,.talk-space {
+        width: 24px;
+    	height: 24px;
+    	background-image: url("../image/icongroup.png");
+    	background-repeat: no-repeat;
+    }
+    .talk-wechat a,.talk-qq a,.talk-microblog a,.talk-space a {
+        display: block;
+    	width: 24px;
+    	height: 24px;
+    }
+    .talk-wechat {
+        background-position:0 -78px;
+    }
+    .talk-qq {
+        background-position:0 -150px;
+    }
+    .talk-microblog {
+        background-position:0 -102px;
+    }
+    .talk-space {
+        background-position:0 -126px;
+    }
+    .discuss-face ul {
+    	float: left;  	
+    }
+    .discuss-talk,.discuss-talk ul {
+    	float: right;
+    }
+    .discuss-face ul li {
+    	margin-left: 6px;  	
+    }
+    .discuss-talk ul li {
+    	padding-right:10px;
+    }
+    .talk-also {
+    	padding-bottom: 10px;
+    }
+    .talk-also span {
+    	color: #9B8878;
+    }
+    .talk-also a{
+    	text-decoration: none;
+    	color:#000; 
+    }
+    .talk-also img {
+    	position: relative;
+    	top: 2px;
+    	width: 16px;
+    	height: 15px;
+    }
+    .talk-also sup {
+    	color: #C0B4CC;
+    	position: relative;
+    	top: 5px;
+    }
+    .nextpage {
+    	list-style: none;
+    	margin-top: 20px;
+    }
+    .nextpage li {
+    	display: inline-block;
+    	float: left;
+    	height: 40px;
+    	line-height: 40px;
+    	text-align: center;	
+    }
+    .nextpage li span {
+    	display: block;
+    	color: #fff;
+    	width: 45px;
+    	background-color:#FFAA14; 
+    }
+    .nextpage li a span {
+    	display: block;
+    	color: #fff;
+    	width: 45px;
+    	background-color:#FFAA14; 
+    	padding: 0 12px 0 12px;
+    }
+    .nextpage li a {
+    	display: block;
+    	width: 45px;
+    	height: 40px;
+    	margin-left: 6px;
+    	color: #666666;
+    	text-decoration: none;
+    	background-color: #fff;
+    }
+    .right-top {
+    	width:315px;
+    	height: 70px;
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-image: url("../image/inform.png");
+    }
+    .right-top a {
+    	display: block;
+    	width: 315px;
+    	height: 80px;
+    }
+    .content-right>div {
+    	width: 315px;
+    	margin-bottom:15px;
+    }
+    .right-ad {
+        height: 290px;
+    }
+    .right-ad>a {
+    	display: inline-block;
+    	height: 40px;
+    	color: #000;
+    	text-align: center;
+    	font-size: 15px;
+    	font-weight:normal;
+    	text-decoration: none;
+    	border: 2px solid #DFE4F9;
+    	line-height: 40px;
+    	background-color: #DFE4F9;
+    	overflow: hidden;
+    }
+    .right-ad>a:hover {
+    	background-color: #fff;
+        font-weight: 40px;
+        font-size: 17px;    
+    }
+    .right-ad div {
+    	position: absolute;
+    	bottom: 20px;
+    	right:1px;
+    }
+    .right-ad div,.right-ad div a{
+    	position: relative;
+    	display:inline-block;
+    	width: 30px;
+    	height: 16px;
+    	float: right;
+    }
+    .right-ad div a {
+    	background-image: url("../image/ad.png");
+    }
+    .content-right>a {
+        display: block;
+        width: 30px;
+        height: 16px;
+        position: absolute;
+    }
+    .right-img img {
+    	width: 315px;
+    	height: 250px;
+    }
+    .right-img img a {
+    	display: block;
+    	width: 315px;
+    	height: 250px;
+    }
+    .right-ctrl {
+    	width: 315px;
+    	height: 30px;
+    	font-size: 12px;
+    	color: #AAA;
+    }
+    .right-ctrl img {
+        width: 90px;
+    	height: 24px;
+    	padding-left: 5px;
+    }
+    .right-ctrl p {
+    	position: absolute;
+    	width: 140px;
+    	height: 24px;
+    	display:inline-block;
+    	padding-left:8px;
+    	line-height: 24px;
+    }
+    .right-laugh {
+        padding-top:15px;
+    	background-color: #fff;
+    	clear:both;
+    }
+    .laugh-top {
+    	width: 286px;
+    	height: 35px;
+        margin-left: 14px;
+        margin-bottom:15px;
+        border-bottom: 1px solid rgba(0,0,0,0.1)
+    }
+    .laugh-top h2 {
+    	color: #6A3906;
+    	font-size: 18px;
+    }
+    .right-laugh>div {
+    	margin-bottom: 15px;
+    }
+    .laugh-fun,.laugh-ad {
+    	display: inline-block;
+    	width: 134px;
+    	height: 110px;
+    	padding-left: 14px;
+    }
+    .laugh-fun a,.laugh-ad a {
+    	display: block;
+    	width: 134px;
+    	height: 110px;
+    	font-size: 12px;
+    	color: #000;
+    	text-align: center;
+    	text-decoration: none;
+    }
+    .laugh-ad a {
+    	border: 1px solid #fff;
+    }
+    .laugh-ad a:hover {
+    	border: 1px solid red;
+    }
+    .laugh-ad img {
+    	width: 134px;
+        height: 110px;
+        background-size: cover;
+        overflow: hidden;
+    }
+    .laugh-fun img {
+    	width: 134px;
+    	height: 90px;
+    	background-size: cover;
+    }
+    .right-hot {
+    	height: 330px;
+    	margin-top: 20px;
+    	background-color: #fff;
+    }
+    .right-hot>a {
+    	display: inline-block;
+    	margin: 15px 0 0 15px;
+    	height: 30px;
+    	width: 50px;
+        text-decoration: none;
+        color: #6A3906;
+        font-size: 18px;
+        font-weight: 40px;
+    }
+    .right-hot ul {
+    	list-style: none;
+    	padding-left:15px;
+    }
+    .right-hot ul li {
+    	margin-top: 7px;
+    }
+    .right-hot ul li a{
+    	color: #6A3906;
+    	text-decoration: none;	
+    }
+    .right-hot ul li a:hover {
+    	color: #000;
+    }
+    .foot {
+    	width:100%;
+    	height: 400px;
+    	margin-top:10px;
+    	background-color: #fff;
+    }
+    .foot-img,.foot-text,.foot-over {
+    	width: 980px;
+    	margin: 0 auto;	
+    }
+    .foot-img {
+    	text-align: center;
+    	padding-top: 20px;
+    }
+    .foot-img img{
+        width: 728px;
+        height: 90px;
+    }
+    .foot-text {
+        height:150px; 
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .foot-text div {
+    	float: left;
+    }
+    .text-about {
+    	display: inline-block;
+    	width: 191px;
+    	height: 120px;
+    }
+    .text-make {
+    	display: inline-block;
+    	width: 191px;
+    	height: 110px;
+    }
+    .foot-text div h3 {
+    	margin-top: 10px;
+    	color: #333333;
+    }
+    .foot-text div ul {
+    	list-style: none;
+    	margin-top: 8px;
+    }
+    .foot-text div ul li {
+        margin-top: 8px;
+    }
+    .foot-text div ul li a {
+    	text-decoration: none;
+    	font-size: 14px;
+    	color: #666;
+    }
+    .foot-text div ul li a:hover {
+    	color: #000;
+    }
+    .foot-over {
+    	margin-top: 20px;
+    	text-align: center;
+    }
+    .foot-over span {
+    	padding-left: 5px;
+    	margin-left: 2px;
+    	border-left: 1px solid #efefef;
+    }
+    .foot-over img {
+    	position: relative;
+    	top: 4px;
+    }
+    .foot-over a {
+    	color: #333;
+    	text-decoration: none; 
+    }
+    .foot-over p {
+    	color: #333;
+        font-size: 12px;
+        line-height: 25px;
+    }
+    .none-div {
+    	position: fixed;
+    	top:0;
+    	width: 100%;
+    	height: 100%;
+    	display: none;
+    	background-color: rgba(0,0,0,0.5);
+    	z-index: 99;
+    }
+    .none-div button {
+        float: right;
+    }
+    .kuang {
+    	position: relative;
+    	width: 200px;
+    	height: 100px;
+    	border-radius: 5px;
+    	border: 2px solid red;
+    	margin: 250px auto;
+    }
+    .kuang::before {
+    	display: block;
+    	position: absolute;
+    	top: 50px;
+    	left: -100px;
+    	width: 100px;
+    	height: 2px;
+    	content:"";
+    	background-color: red;
+    }
+    .kuang::after {
+    	display: block;
+    	position: absolute;
+    	top: 50px;
+    	left: 200px;
+    	width: 100px;
+    	height: 2px;
+    	content:"";
+    	background-color: red;
+    }
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="header-bar clearfix">
+		<div class="bar-img clearfix">
+			<a href="#"><img src="../image/logo.jpg" alt="">
+			</a>
+		</div>
+		<div class="bar-middle">
+			<ul class="clearfix">
+            <li><a href="#" class="hot">热门</a></li>
+            <li><a href="#" class="time">24小时</a></li>
+            <li><a href="#">热图</a></li>
+            <li><a href="#">文字</a></li>
+            <li><a href="#">穿越</a></li>
+            <li><a href="#">糗图</a></li>
+            <li><a href="#">新鲜</a></li>
+            <li><a href="#">投稿</a></li>
+        </ul>
+		</div>
+		<div class="bar-right">
+			<a href="#">登录</a>
+		</div>
+		</div>
+	</div>
+	<div class="none-div">
+	<button>取消</button> 
+           <div class="kuang"></div>
+           
+	</div>
+	<div class="content clearfix">
+		<div class="content-left">
+			<div class="content-discuss clearfix">
+			    <div class="discuss-text"> 
+				    <a href="#">
+				    <img src="../image/people.jpg" alt="" class="discuss-img">
+				    </a>
+			        <a href="#" ><h3>金脚印</h3></a>
+			        <span class="boy-age">20</span>
+			    </div>
+			    <div class="discuss-say">
+				<a href="#">
+				   	六姐家买了两只小鸭子当宠物，养了几天发现小鸭子实在太脏了就在家族群里说要送人，结果小侄子知道了非要去六姐家跟小鸭子玩，然后我，我妈，我嫂子带着小侄子和我儿子去六姐家玩，途中大堂姐和二堂姐在逛街听到我们去六姐家就也来了。到了才发现原来三堂姐和五姐早来了，后来老妈一看就她一个长辈，于是打电话把大妈，二妈，三妈全叫来了。四姐带着孩子最晚到，一看这么多人都懵了，很小声的问我是什么情况，我特别认真的告诉她说，六姐最近太闲，想给小鸭子... 
+				   	<a href="#" class="forall" style="color: #FFBB00;font-size: 13px;">查看全文</a>
+				  	<span class="see-all"><a href="#"></a></span>
+				</a>
+				</div>
+				<div class="discuss-joke">852 好笑 · <a href="">30 评论</a></div>
+				<div class="discuss-face">
+				    <div class="discuss-face">
+					    <ul>
+						<li class="face-left"><a href="#"></a></li>
+						<li class="face-middle"> <a href="#"></a></li>
+						<li class="face-right"><a href="#"></a></li>
+					    </ul>
+					</div>
+					<div class="discuss-talk">
+					    <ul>
+					    <li class="talk-wechat"><a href="#"></a></li>
+						<li class="talk-qq"><a href="#"></a></li>
+						<li class="talk-microblog"><a href="#"></a></li>
+						<li class="talk-space"><a href="#"></a></li>
+					    </ul>
+					</div>
+				</div>
+				<div class="talk-also">
+						<a href=""><img src="../image/cmt-god.png" alt="">
+						<span>盘香：</span>什么鬼，<img src="../image/like.png" alt=""><sup>20</sup>
+						</a>
+				</div>
+			</div>
+			<div>
+				<div class="discuss-text"> 
+				    <a href="#" >
+				    <img src="../image/people3.jpg" alt="" class="discuss-img">
+				    </a>
+			        <a href="#" ><h3>王的女人在哪</h3></a>
+			        <span class="girl-age">25</span>
+			    </div>
+			    <div class="discuss-say">
+				<a href="#">
+					天下着小雨，撑着一把小伞，转过一个拐角，看到一个背影，是她！还是没有打伞的，我走上前去为她撑着，她抬起头来对我微微一笑，轻声说：“谢谢你，我有男朋友了。”“不客气，我怕他会心疼，我不忍心。” 
+				</a>
+				</div>
+				<div class="discuss-joke">112 好笑 · <a href="">10 评论</a></div>
+				<div class="discuss-face">
+				    <div class="discuss-face">
+					    <ul>
+						<li class="face-left"><a href="#"></a></li>
+						<li class="face-middle"> <a href="#"></a></li>
+						<li class="face-right"><a href="#"></a></li>
+					    </ul>
+					</div>
+					<div class="discuss-talk">
+					    <ul>
+					    <li class="talk-wechat"><a href="#"></a></li>
+						<li class="talk-qq"><a href="#"></a></li>
+						<li class="talk-microblog"><a href="#"></a></li>
+						<li class="talk-space"><a href="#"></a></li>
+					    </ul>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="discuss-text"> 
+				    <a href="#" >
+				    <img src="../image/people5.jpg" alt="" class="discuss-img">
+				    </a>
+			        <a href="#" ><h3>昵称想了一年</h3></a>
+			        <span class="boy-age">25</span>
+			    </div>
+			    <div class="discuss-say">
+				<a href="#">
+				    换脸盆咯！要不锈钢的！
+					<img src="../image/app8.jpg" alt="">
+				</a>
+				</div>
+				<div class="discuss-joke">65 好笑 · <a href="">20 评论</a></div>
+				<div class="discuss-face">
+				    <div class="discuss-face">
+					    <ul>
+						<li class="face-left"><a href="#"></a></li>
+						<li class="face-middle"> <a href="#"></a></li>
+						<li class="face-right"><a href="#"></a></li>
+					    </ul>
+					</div>
+					<div class="discuss-talk">
+					    <ul>
+					    <li class="talk-wechat"><a href="#"></a></li>
+						<li class="talk-qq"><a href="#"></a></li>
+						<li class="talk-microblog"><a href="#"></a></li>
+						<li class="talk-space"><a href="#"></a></li>
+					    </ul>
+					</div>
+				</div>
+				<div class="talk-also">
+						<a href=""><img src="../image/cmt-god.png" alt="">
+						<span>丫丫：</span>
+                          回复 7楼：装逼很成功！楼下的鼓掌！行了！逼也装完了，躺下吧！该火化了！
+                          <img src="../image/like.png" alt=""><sup>82</sup>
+						</a>
+				</div>
+			</div>
+			<div>
+				<div class="discuss-text"> 
+				    <a href="#" >
+				    <img src="../image/people6.jpg" alt="" class="discuss-img">
+				    </a>
+			        <a href="#" ><h3>听说你想大爷我了</h3></a>
+			        <span class="girl-age">29</span>
+			    </div>
+			    <div class="discuss-say">
+				<a href="#">
+					我表弟在广场跳街舞，他各种倒立，各种旋转，最后还整个托马斯，围观群众报以热烈的掌声。我旁边一位大妈撇着嘴，嗤之以鼻：“这有啥牛的？”我问她：“你见过更牛的？！”她说：“我娃羊癫疯发作时比这厉害多了！”
+				</a>
+				</div>
+				<div class="discuss-joke">995 好笑 · <a href="">14 评论</a></div>
+				<div class="discuss-face">
+				    <div class="discuss-face">
+					    <ul>
+						<li class="face-left"><a href="#"></a></li>
+						<li class="face-middle"> <a href="#"></a></li>
+						<li class="face-right"><a href="#"></a></li>
+					    </ul>
+					</div>
+					<div class="discuss-talk">
+					    <ul>
+					    <li class="talk-wechat"><a href="#"></a></li>
+						<li class="talk-qq"><a href="#"></a></li>
+						<li class="talk-microblog"><a href="#"></a></li>
+						<li class="talk-space"><a href="#"></a></li>
+					    </ul>
+					</div>
+				</div>
+				<div class="talk-also">
+						<a href=""><img src="../image/cmt-god.png" alt="">
+						<span>浅若.梨花落：</span>
+                          回复 25楼：每个犯羊癫疯的孩子都是出色的街舞明星
+                          <img src="../image/like.png" alt=""><sup>122</sup>
+						</a>
+				</div>
+			</div>
+			<div>
+				<div class="discuss-text"> 
+				    <a href="#" >
+				    <img src="../image/people4.jpg" alt="" class="discuss-img">
+				    </a>
+			        <a href="#" ><h3>哭笑不得</h3></a>
+			        <span class="boy-age">28</span>
+			    </div>
+			    <div class="discuss-say">
+				<a href="#">
+					<pre>
+哥们：哎，刚才被老板骂了！
+我：为啥？
+哥们：我看书被他抓到了！
+我：你上班时间看书？
+哥们：我是中午休息的时间看书！
+我：那为啥还骂你？
+哥们：我是透过门缝偷看他和他的女秘书！
+我：...... 
+					</pre>
+				</a>
+				</div>
+				<div class="discuss-joke">995 好笑 · <a href="">5 评论</a></div>
+				<div class="discuss-face">
+				    <div class="discuss-face">
+					    <ul>
+						<li class="face-left"><a href="#"></a></li>
+						<li class="face-middle"> <a href="#"></a></li>
+						<li class="face-right"><a href="#"></a></li>
+					    </ul>
+					</div>
+					<div class="discuss-talk">
+					    <ul>
+					    <li class="talk-wechat"><a href="#"></a></li>
+						<li class="talk-qq"><a href="#"></a></li>
+						<li class="talk-microblog"><a href="#"></a></li>
+						<li class="talk-space"><a href="#"></a></li>
+					    </ul>
+					</div>
+				</div>
+			</div>
+			<span>
+				<ul class="nextpage">
+					<li><span >1</span></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+					<span style="background-color:#F7F7F7;color:#000;width:30px;">...
+					</span>
+					</li>
+					<li><a href="#">13</a></li>
+					<li><a href="#"><span>下一页</span></a></li>
+				</ul>
+			</span>
+			<div></div>
+		</div>
+		<div class="content-right">
+			<div class="right-top"><a href="#"></a></div>
+			<div class="right-ad">
+			    <a href="#" style="width:311px;">如何去除口臭的小绝招</a>
+			    <a href="#" style="width:152px;">html5 前端开发</a>
+			    <a href="#" style="width:150px;">H5 培训机构</a>
+			    <a href="#" style="width:97px;">Web 前端</a>
+			    <a href="#" style="width:100px;">小纸牌游戏</a>
+			    <a href="#" style="width:97px;">Web 前端</a>
+			    <a href="#" style="width:152px;">html5 前端开发</a>
+			    <a href="#" style="width:150px;">H5 培训机构</a>
+			    <a href="#" style="width:97px;">Web 前端</a>
+			    <a href="#" style="width:205px;">亲自鉴定需要多少钱</a>
+			    <a href="#" style="width:110px;">智慧社区</a>
+			    <a href="#" style="width:192px;">一直很胖怎么办</a>
+			    <div><a href="#"></a></div>
+			</div>
+			<div class="right-img">
+			    <a href="#"><img src="../image/rightDs.jpg" alt="">
+			    </a>
+			</div>
+			<div class="right-ctrl">
+				<img src="../image/ctrl_d.png" alt=""><p>把糗事百科加入收藏夹</p>
+			</div>
+			<div class="right-laugh ">
+			    <div class="laugh-top">
+			    	<h2>爆笑糗事精选</h2>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app1.jpg" alt="">
+			    		如果我是DJ 你爱我吗？
+			    	</a>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app3.jpg" alt="">
+			    		我也是醉了...
+			    	</a>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app2.jpg" alt="">
+			    		难受想哭
+			    	</a>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app4.jpg" alt="">
+			    		我先试试
+			    	</a>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app5.jpg" alt="">
+			    		做得真棒！
+			    	</a>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app7.jpg" alt="">
+			    		厉害了 小可爱
+			    	</a>
+			    </div>
+			     <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app6.jpg" alt="">
+			    		激动2017
+			    	</a>
+			    </div>
+			    <div class="laugh-fun">
+			    	<a href="#">
+			    		<img src="../image/app2.jpg" alt="">
+			    		bong沙卡拉卡
+			    	</a>
+			    </div>
+			</div>
+			<div class="right-hot">
+				<a href="#">热门</a>
+				<a href="#">话题</a>
+				<a href="#">专区</a>
+				<a href="#">推荐</a>
+				<ul>
+					<li><a href="#"># 关于读书和思考的名言 #</a></li>
+					<li><a href="#"># 带字母qq网名 #</a></li>
+					<li><a href="#"># 关于读书和思考的名言 #</a></li>
+					<li><a href="#"># 关于一梦三年的网名 #</a></li>
+					<li><a href="#"># 女生网名霸气带王字 #</a></li>
+					<li><a href="#"># 关于读书和思考的名言 #</a></li>
+					<li><a href="#"># QQ带耳机女头像 #</a></li>
+					<li><a href="#"># 关于读书和思考的名言 #</a></li>
+					<li><a href="#"># 女生网名霸气带王字 #</a></li>
+					<li><a href="#"># 带眼镜男生qq超拽头像 #</a></li>
+				</ul>
+			</div>
+			<div class="right-laugh">
+				<div class="laugh-ad">
+			    	<a href="#">
+			    		<img src="../image/app9.jpg" alt="">
+			    	</a>
+			    </div>
+			    <div class="laugh-ad">
+			    	<a href="#">
+			    		<img src="../image/app10.jpg" alt="">
+			    	</a>
+			    </div>
+			    <div class="laugh-ad">
+			    	<a href="#">
+			    		<img src="../image/app11.jpg" alt="">
+			    	</a>
+			    </div>
+			    <div class="laugh-ad">
+			    	<a href="#">
+			    		<img src="../image/app12.jpg" alt="">
+			    	</a>
+			    </div>
+			</div>
+			<div class="right-img">
+			    <a href="#"><img src="../image/imgad2.jpg" alt="">
+			    </a>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+		<div class="foot-img">
+			<a href="#"><img src="../image/imgad.jpg" alt=""></a>
+		</div>
+		<div class="foot-text">
+			<div class="text-about">
+			    <h3>关于</h3>
+				<ul>
+					<li><a href="#">关于糗百</a></li>
+					<li><a href="#">加入我们</a></li>
+					<li><a href="#">联系方式</a></li>
+				</ul>
+			</div>
+			<div class="text-about">
+			    <h3>帮助</h3>
+				<ul>
+					<li><a href="#">在线反馈</a></li>
+					<li><a href="#">用户协议</a></li>
+					<li><a href="#">隐私策略</a></li>
+				</ul>
+			</div>
+			<div class="text-make">
+			    <h3>下载</h3>
+				<ul>
+					<li><a href="#">Android 客户端</a></li>
+					<li><a href="#">IPhone 客户端</a></li>
+				</ul>
+			</div>
+			<div class="text-about">
+			    <h3>关注</h3>
+				<ul>
+					<li><a href="#">微信</a></li>
+					<li><a href="#">新浪微博</a></li>
+					<li><a href="#">QQ空间</a></li>
+				</ul>
+			</div>
+			<div class="text-make">
+			    <h3>组织</h3>
+				<ul>
+					<li><a href="#">网站反馈群</a></li>
+					<li><a href="#">官方粉丝群</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="foot-over">
+			<p>
+互联网ICP备案：京ICP备14028348号-1 
+<span>广播电视节目制作经营许可证：（京）字第08319号</span> 
+<span>网络文化经营许可证：京网文[2017]2369-247号 </span><br>
+电信与信息服务业务经营许可证：京ICP证140448号
+<span>计算机信息网络国际联网单位备案：</span>
+<a href="#"><img src="../image/beian.png" alt="">京公网安备11010502031601号</a> 
+<br>
+友际无限（北京）科技有限公司
+<span>违法和不良信息举报电话：010-84872896</span> <span>邮箱：kefu@qiushibaike.com 
+</span><br>
+© Qiushibaike.com 糗事百科版权所有
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+      $(function(){
+      	   var header = $(".bar-middle ul li");
+      	   console.log(header);
+           $(".bar-middle ul li").click(function(){
+            	$(this).addClass("change-page").siblings().removeClass("change-page");
+            })
+           $(".hot").click(function(){
+           	    $(".content-right").slideToggle();
+           })
+           var time=$(".time");
+           console.log(time);
+           $(".bar-right a").click(function(){
+           	    $(".none-div").show();
+           })
+           $("button").click(function(){
+           	    $(".none-div").hide();
+           })
+        })
+	</script>
+</body>
+</html>
