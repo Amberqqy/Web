@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拉勾网</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+</head>
+<style>
+    body {
+		font-family:"Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+		font-size: 14px;
+		color: #333;
+		word-wrap: break-word
+	}
+	a {
+		text-decoration: none;
+		color: #333;
+	}
+	a:hover {
+    	color: #00b38a;
+    }
+	ul {
+		list-style: none;
+	}
+	html,body,div,a,p,ul,li,span,img ,h4{
+		padding: 0;
+		margin: 0;
+	}
+	.header {
+		width: 100%;
+		height: 30px;
+		background-color: #333;
+	}
+	.header a {
+        float: left;
+        display: block; 
+        line-height: 20px;
+        padding: 0 10px;
+        height: 20px;
+        color: #c4c3c3;
+        margin-top: 5px;
+	}
+	.head-left {
+		margin-left: 35px;
+	}
+	.head-right {
+		float: right;
+		margin-right: 35px;
+	}
+	.header .head-img {
+		color: #08d7a2;
+		border-right:1px solid #5d5d5d;
+	}
+	.header .head-img:hover {
+		color: #05eaaf;
+	}
+	.head-else {
+		border-right:1px solid #5d5d5d;
+	}
+	.head-img img {
+        width: 10px;
+        height: 15px;
+        position: relative;
+        top: 2px;
+	}
+    .head-right a:hover ,.head-left a:hover {
+		color: #fff;
+	}
+	.nav {
+		width: 100%;
+		height: 54px;
+		border-top: 1px solid #d2d2d2;
+		border-bottom: 1px solid #e5e5e5;
+		background-color: #fafafa;
+	}
+	.nav-new {
+		width: 260px;
+		height: 54px;
+	}
+	.nav-box {
+		margin-left:85px; 
+	}
+	.nav-new a ,.nav-new img ,.nav-new p {
+		display: block;
+		float: left;
+	}
+	.nav-box>div {
+		float: left;
+		display: inline-block;
+	}
+	.nav-new img {
+		position: relative;
+		margin: 10px 0 0 0;
+	}
+	.nav-new a {
+        margin: 26px 0 0 0;
+        color: #999;
+        font-size: 12px;
+	}
+	.nav-new p {
+		margin: 20px 10px 0 10px;
+		font-size: 18px;
+		color: #333；
+	}
+	.nav-warp ul li{
+        float: left;
+        margin: 0 17px;
+        line-height: 54px;
+	}
+	.clearfix::after {
+		display: block;
+		clear: both;
+		height: 0;
+		content: "";
+	}
+	.nav-warp ul li a {
+		display: block;
+		height: 53px;
+		font-size: 18px;
+		color: #999;
+		padding: 0 6px;
+	}
+	.nav-botton {
+        border-bottom: 2px solid #00b38a;
+	}
+	.nav-warp ul li a:hover {
+		color: #333;
+		border-bottom: 2px solid #00b38a;
+	}
+	.head-text {
+		width: 100%;
+		height: 136px;
+		background-color: #F2F5F4;
+	}
+	.head-search {
+		width: 940px;
+		margin:0 auto 0;
+		padding: 30px 0 28px 0;
+	}
+	.text input {
+        width: 795px;
+        height: 30px;
+        padding: 10px 10px;
+        border: none;
+        float: left;
+        font-size: 16px;
+	}
+	.text a {
+		display: block;
+		width: 125px;
+		height: 50px;
+		float: left;
+		background-color: #00b38a;
+		line-height: 50px;
+		text-align: center;
+		color: #fff;
+		font-size: 18px;
+	}
+	.hot {
+		margin-top: 10px;
+	}
+	.hot span {
+		font-size: 14px;
+		color: #777;
+		margin-right: 10px;
+	}
+	.hot a {
+		color: #00b38a;
+		margin-right: 10px;
+	}
+	.hot a:hover {
+		text-decoration: underline;
+	}
+	.content {
+		width: 1200px;
+		margin: 25px auto;
+		height: 420px;
+	}
+	.content>div {
+		display: inline-block;
+	}
+	.content-img {
+		position: relative;
+		margin-left: 45px;
+		padding-top: 25px;
+		width: 820px;
+        height: 388px;
+        float: right;
+        overflow: hidden;
+	}
+	.content-img>a {
+		display: inline-block;
+	}
+	.content-img img {
+		width: 820px;
+		height: 388px;
+	}
+	.lunimg {
+		display: inline-block;
+		float: left;
+		width: 820px;
+		height: 388px;
+		
+		position: relative;
+	}
+    .lista {
+       position: relative;        
+    }
+    .index {
+    	position: relative;
+    	z-index: 10;
+    	width: 321px;
+    	overflow: hidden;
+    	padding: 15px 0 15px 15px;
+    	border-right: 0px ;
+    	border-top: 1px solid #fff;
+    	border-bottom: 1px solid #fff;
+    	border-left: 1px solid #fff;
+    	background-color: #fff;
+    }
+    .lista:hover .lista::after {
+    	background-color: pink;
+    }
+    .lista:hover .index {
+    	box-shadow: 0 0 4px 2px rgba(0,0,0,0.09);
+    	border-right: 0;
+    	/*overflow: hidden;*/
+    }
+    .lista:hover .lista-some {
+    	display: block;
+    }
+    .index span{
+        font-size: 18px;
+        color: #333;
+        margin-right: 15px;
+    }
+    .index a {
+    	margin-right: 18px;
+    	color: #555;
+    }
+    .index img {
+    	position: relative;
+    	float: right;
+    	right: 18px;
+    	top: 7px;
+    }
+    .index a:hover {
+    	text-decoration: underline;
+    	color: #00b38a;
+    	font-size: 14px;
+    }
+    .lista-some {
+    	position: absolute;
+    	left: 336px;
+    	top: 0;
+    	width: 650px;
+    	z-index: 555;
+    	border-top-left-radius: 0;
+    	background-color: #fff;
+    	box-shadow: 0 0 4px 2px rgba(0,0,0,0.09);
+    }
+    .lista-some h4 {
+    	padding: 12px 0 8px 18px;
+    	font-size: 14px;
+    	color: #333;
+    }
+    .lista-some a {
+    	display: inline-block;
+    	padding:0 8px;
+    	margin: 9px 0;
+    	color: #555;
+    	font-size: 14px;
+    	line-height: 15px;
+    	border-left: 1px solid rgba(3,3,3,0.1);
+    }
+    .lista-some>div {
+    	margin: 10px auto;
+    }
+    .boxa {
+    	margin: 0 10px;
+    }
+    .lista-some:hover {
+        box-shadow: 0 0 4px 2px rgba(0,0,0,.09);
+    }
+    .some {
+    	display: none;
+    }
+    .content-left {
+    	margin-left: -15px;
+    }
+    .content-left>div {
+    	margin-top: 3px;
+    }
+    .box-work {
+    	position: relative;
+    	width: 1200px;
+    	margin: 20px auto;
+    }
+    .work a {
+    	display: inline-block;
+    	padding: 15px 0 15px 0 ;
+    	font-size: 16px;
+    	color: #999;
+    }
+    .work .bottom {
+    	border-bottom: 2px solid #333;
+    	color: #333;    	
+    	margin-right: 20px;    	
+    }
+    .work {
+    	width:1200px;
+    	position: relative;
+        z-index: 888;
+        clear: both;
+        margin-top: 40px;
+    	border-bottom: 1px solid #E8E8E8;
+    }
+    .do-work ,.do-worka {
+    	position: relative;
+    	width: 1200px;
+    	padding: 30px 0 10px 0;
+    }
+    .do-work>div {
+    	position: relative;
+    	display: inline-block;
+        float: left;
+        width:387px;
+        height: 200px;
+        margin-bottom: 16px;
+        border: 1px solid #EAEEED;
+    }
+    .do-worka>div {
+        position: relative;
+    	display: inline-block;
+        float: left;
+        width:286px;
+        height: 270px;
+        margin-bottom: 16px;
+        border: 1px solid #EAEEED;
+    }
+    .do-work>div:hover {
+        box-shadow: 0 0 4px 2px rgba(0,0,0,.09);
+    }
+    .do-worka>div:hover {
+        box-shadow: 0 0 4px 2px rgba(0,0,0,.09);
+    }
+    .worka-left {
+    	margin: 20px 16px 16px 16px;
+    	border-bottom: 1px dashed rgba(0,0,0,0.2);
+    }
+    .worka-left>div {
+    	margin-bottom: 10px;
+    }
+    .lane a ,.lane p ,.makell ,.lane span {
+        display: inline-block;
+        float: left;
+        margin-right:7px;
+    }
+    .lane span {
+    	float: right;
+    }
+    .makell {
+    	color: #555;   	
+        font-size: 16px;
+    	font-weight:600;
+    }
+    .makell:hover {
+     	color: #00b38a;
+    }
+    .lane {
+    	height: 20px;
+    }
+    .lane p {
+     	line-height: 21px;
+     	color: #999;
+     	font-size: 14px;
+    }
+    .lane img {
+     	position: relative;
+     	top: 3px;
+    }
+    .lane span {
+    	color: #fa6041;
+    	font-size: 16px;
+    }
+    .line {
+    	clear: both;
+    	color: #777;
+    }
+    .server {
+    	float: left;
+    }
+    .server span {
+    	display: inline-block;
+    	padding: 5px 12px;
+    	margin-right: 10px;
+    	font-size: 12px;
+    	border-radius: 3px;
+    	color: #999;
+    	border: 1px solid rgba(0,0,0,0.1)
+    }
+    .worka-img {
+    	height: 40px;
+    	padding: 0 16px;
+    }
+    .worka-img>span {
+    	display: inline-block;
+    	float: left;
+    	position: relative;
+    }
+    .worka-img img {
+    	width: 40px;
+    	height: 40px;   	
+    }
+    .worka-text {
+    	/*width: 200px;*/
+    	height: 40px;
+    	padding-left: 10px;
+    	font-size: 14px;
+    }
+    .worka-text  a {
+        color: #555;
+    }
+    .worka-text a:hover {
+        color: #00b38a;
+    }
+    .kimi {
+    	margin-left: 16px;
+    }
+    .seemore {
+    	display: block;
+    	position: relative;
+    	left: 405px;
+    	bottom: 0;
+    	width: 389px;
+    	border: 1px solid #00b38a;
+    }
+    .seemore a {
+    	display: block;
+    	text-align: center;
+    	line-height: 44px;
+    	color: #00b38a;
+    	font-size: 16px;
+    }
+    .seemore a:hover {
+    	background-color:#00b38a;
+    	color: #fff; 
+    }
+    .rel {
+    	position: relative;
+    	width: 1000px;
+    	overflow: hidden;
+    	z-index: 555;
+    	padding:20px 0  18px 0;
+    }
+    .rel>a {
+    	position: relative;
+        margin: 15px 10px;
+        line-height: 30px;
+        word-wrap: break-word;
+        text-align: justify;
+        word-break: keep-all;
+    }
+    .smake {
+    	position:relative;  
+    	float: right;
+    	top: 21px;   
+    	z-index: 999; 	
+    }
+    .smake i {
+    	position: relative;
+    	top: -3px;
+        padding-left: 5px;
+    }
+    .smile>a:hover ,.rel>a:hover {
+        text-decoration: underline;
+        color: #00b38a;
+    }
+    .lastover {
+    	position: relative;
+    	width: 100%;
+    	height: 60px;
+    }
+    .botton {
+    	position: absolute;
+    	width: 100%;
+    	clear: both;
+    }
+    .box-fixed {
+    	width: 100%;
+    	background-color: #09C084;
+    	height: 60px;
+    }
+    .fixed-tool {
+    	width: 1200px;
+    	height: 60px;
+    	margin: 0 auto;
+    	z-index: 9999;
+    	position: relative;
+    }
+    .fixed-tool img{
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       width: 90px;
+       height: 86px;
+    }
+    .span-tool ,.nav-bottom ,.fixed-tool img {
+    	display: inline-block;
+    	float: left;
+    }
+    .span-tool {
+    	width: 750px;
+    	height: 60px;
+    	margin-left: 200px;
+    }
+    .fina p {
+    	float: left;
+    	font-size: 20px;
+    	color: #fff;
+    	margin:17px 15px;
+    	text-align: center;
+    }
+    .nav-bottom {
+    	position: relative;
+    	width: 213px;
+    	height: 60px;
+    	float: right;
+    }
+    .nav-bottom a {
+    	display: inline-block;
+    	float: left;
+    	width: 91px;
+    	height: 38px;
+    	line-height: 38px;
+    	border-radius: 3px;
+    	margin: 10px 0;
+    	font-size: 16px;
+        border:1px solid #fff; 
+    	margin-right: 10px;
+    	text-align: center;
+    }
+    .dohr {
+    	padding-right: 30px;
+    	padding-left: 100px;
+    	border-right: 1px solid rgba(255,255,255,0.4);
+    }
+    .din {
+    	color: #fff;
+    	background-color: #09C084;
+    }
+    .din:hover {
+    	background-color: #fff;
+    	color: #09C084;
+    }
+    .set {
+    	background-color: #fff;
+    	color: #09C084;
+    }
+    .over {
+    	position: relative;
+    	width: 1024px;
+    	height: 56px;
+    	margin: 0 auto;
+    	margin-top: 10px;
+    }
+    .over span {
+    	display:inline-block;
+    }
+    .inner {
+    	position: relative;
+    	top: -2px;
+        display:inline-block;
+        margin-left: 17px;
+    }
+    .inner a {
+    	padding-left: 8px;
+    }
+    .inner a:hover {
+        color: #333;
+    }
+    .copy {
+    	width:435px;
+    	margin: 0 auto;
+    	font-size: 12px;
+    	line-height: 12px;
+    	color: #d5d5d5;
+    	padding:8px 0 0 10px;
+    }
+    .copy a {
+    	color: #d5d5d5;
+    }
+    .workb {
+    	padding-bottom: 12px;
+    }
+    .workb img ,.workb a ,.workb p {
+        position: relative;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .workb a {
+    	display: block;
+    	line-height: 25px;
+    	margin-top: 10px;
+    }
+    .workb p {
+    	display: block;
+    	text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #555;
+        line-height: 22px;
+        /*word-wrap: normal;*/
+    }
+    .workb .write {
+    	color: #999;
+    }
+    .workb img {
+    	width: 80px;
+    	height: 80px;
+    	margin: 0 87px;
+    	vertical-align: top;
+    }
+    .workb-span span {
+        display: inline-block;
+        width: 84px;
+        text-align: center;
+    }
+    .workb-span span a {
+    	display: block;
+    	color: #00b38a;
+    }
+    .workb-span .dowrite {
+    	font-size: 12px;
+    	color: #555;
+    }
+    .workb-say {
+    	border-left: 1px solid rgba(3,3,3,0.1);
+    }
+    .absoa ,.absob ,.absoc {
+    	position: absolute;
+    	width: 160px;
+        height: 160px;
+        display: none;
+        top: -160px;  
+        z-index: 999;
+    }
+    .absob {
+    	left: 170px;
+    }
+    .absoc {
+    	left: 240px;
+    }
+    .click-come {
+    	position: absolute;
+    	width: 50px;
+    	height: 30px;
+    	right: 10px;
+    }
+    .click-come:hover {
+    	color: #333;
+    }
+    .click-come img {
+    	position: relative;
+    	/*padding-left: 8px;*/
+    	top: -3px;
+    }
+    .smake .smile {
+    	position: absolute;
+    	height: 100px;
+    	bottom: 0;
+    	background-color: red;
+    	z-index: 888;
+    }
+    .boxa a:hover {
+    	text-decoration: underline;
+    	color: #00b38a;
+    }
+    .hide {
+    	display: none;
+    }
+    .botton-top {
+    	position: fixed;
+    	bottom: 0;
+        z-index: 9999;
+        width: 100%;
+        /*margin-top: 30px;*/
+    }
+    .some .sum {
+    	color: #00b38a;
+    }
+    .some .curr {
+    	border-left: none;
+    }
+    .lista:hover .backk{
+        display: block;
+    }
+    .backk {
+    	display: none;
+    	width: 10px;
+    	content: "";
+        position: absolute;
+        right: -2px;
+        z-index: 6666;
+        top: 0px;
+    	background-color: #fff;
+    	height: 57px;
+    }
+    .content-img .hide {
+    	display: none;
+    }
+    .img-left ,.img-right {
+    	position: absolute;
+        display: block;
+        width: 18px;
+    	height: 34px;
+    	top: 194px;
+    }
+    .content-img:hover .img-left a ,.content-img:hover .img-right a {
+    	display: block;
+    }
+    .img-left a ,.img-right a {
+    	display: none;
+    	width: 18px;
+    	height: 34px;
+    }
+    .img-left {
+    	left: 25px;
+    }
+    .img-right {
+    	right: 25px;
+    }
+    .img-left a{
+        background-image: url("./image/banner_arrow_left_80dbc0e.png");
+        float: left;
+        background-repeat: no-repeat;
+    }
+    .img-right a{
+        background-image: url("./image/banner_arrow_right_04d6575.png");
+        float: right;
+        background-repeat: no-repeat;
+    }
+    .img-left a:hover {
+        background-image: url("./image/banner_arrow_left.png");
+        float: left;
+        background-repeat: no-repeat;
+    }
+    .img-right a:hover {
+        background-image: url("./image/banner_arrow_right.png");
+        float: right;
+        background-repeat: no-repeat;
+    }
+    .content-img .lost {
+    	position: absolute;    	
+    	left: 385px;
+    	bottom: 25px;   	
+    }
+    .content-img .lost a{
+    	float: left;
+    	width: 6px;
+    	height: 6px;
+    	border-radius: 50%;
+        background-color: #fff;
+    	display: inline-block;
+    	margin-left: 10px;
+    }
+    .content-img .lost .lost-impor {
+    	width: 10px;
+    	height: 6px;
+    	border-radius: 3px;
+    }
+    .lunbo {
+    	width: 2640px;
+    	height: 388px;
+    	margin-left: -820px;
+    }
+   /* .lane .bleen:hover .hover-curren {
+    	display: block;
+    }*/
+    .hover-curren {
+    	position: absolute;
+    	display: none;
+    	width: 300px;
+    	height: 160px;
+    	left: 190px;
+    	top: -10px;
+    	z-index: 999;
+    	background-color: #fff;
+    	box-shadow: 0 0 1px 1px rgba(0,0,0,.09); 
+    }
+    .hover-curren::before ,.hover-curren::after {
+    	position: absolute;
+        display: inline-block;
+        left:-10px;
+        content: '';
+        width: 0;
+        height: 0;
+        top: 31px;
+        line-height: 0;
+        border-top: 10px solid transparent;       
+        border-bottom: 10px solid transparent;
+    }
+    .hover-curren::before {    	
+        z-index: 3;
+        left: -9px;
+        border-right: 10px solid #fff;
+    }
+    .hover-curren::after { 
+        z-index: 2;
+        top: 31px;
+        border-right: 10px solid rgba(0,0,0,0.1);
+    }
+    .hover-curren>div {
+    	display: inline-block;
+    	float: left;
+    	width: 130px;
+    	height: 160px;
+    }
+    .hover-curren .curren-left {
+    	width: 170px;
+    	height: 160px;
+    }
+    .curren-left img {
+    	width: 62px;
+    	height: 62px;
+    	padding-top: 5px;
+    	border-radius: 50%;
+    }
+    .curren-left .curren-text {
+    	line-height: 20px;
+    	width: 73px;
+        color: red;
+        padding-top: 20px;
+        display: block;
+        color: #333;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .lane .curren-left .wcolor {
+        padding-top: 2px;
+        padding-bottom: 12px;
+        font-size: 13px;
+        font-weight:500;
+    }
+    .lane .curren-left .belong {
+    	padding-left: 10px;
+    	margin-top: 8px;
+    	font-size: 14px;
+    	font-weight:600;
+    	color: #000;
+    }
+    .lane .curren-left .belong a:hover {
+    	color: #000;    	
+    }
+    .curren-right {
+        margin-top: 20px;
+    }
+</style>
+<body>
+	<div class="header">
+		<div class="head-left">
+			<a href="#" class="head-img">
+			<img src="./image/app_icon_0495d1d.png" alt="">
+			拉钩APP</a>
+			<a href="#">进入企业版</a>
+		</div>
+		<div class="head-right">
+			<a href="#" class="head-else">登录</a>
+			<a href="#">注册</a>
+		</div>
+	</div>
+	<div class="nav">
+	    <div class="nav-box">
+		<div class="nav-new">
+			<img src="./image/logo_1c5763c.png" alt="" class="logo">
+			<p>北京站</p>
+			<a href="#">[切换城市]</a>
+		</div>
+		<div class="nav-warp">
+			<ul class="clearfix">
+				<li><a href="#" class="nav-botton">首页</a></li>
+				<li><a href="#" class="some">公司</a></li>
+				<li><a href="#" class="some">校园</a></li>
+				<li><a href="#" class="some">言职</a></li>
+				<li><a href="#" class="some">大鲲</a></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+	<div class="head-text">
+		<div class="head-search">
+			<div class="text clearfix">
+				<input type="text" value="" placeholder="搜索职位、公司或地点">
+				<a href="#">搜索</a>
+			</div>
+			<div class="hot">
+				<span>热门搜索：</span>
+				<a href="#">java</a>
+				<a href="#">新媒运营体</a>
+				<a href="#">UI设计师</a>
+				<a href="#">PHP</a>
+				<a href="#">销售经理</a>
+				<a href="#">产品经理</a>
+				<a href="#">C++</a>
+				<a href="#">内容运营</a>
+				<a href="#">拉勾APP</a>
+			</div>
+		</div>
+	</div>
+	<div class="content clearfix">
+		<div class="content-left clearfix">
+			<div class="lista">
+			    <div class="index clearfix">
+				    <span>技术</span>
+				    <a href="#">java</a>
+				    <a href="#">PHP</a>
+				    <a href="#">C++</a>
+				    <a href="#">Android</a>
+				    <img src="./image/arrow_92b8589.png" alt="">
+			    </div>	
+			    <div class="backk"></div>			
+				<div class="lista-some some" >
+				    <div>
+				    	<h4>后端开发<sup><img src="./image/icon_new_3614855.png" alt=""></sup></h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>				
+				</div>
+			</div>	
+			<div class="lista">
+			    <div class="index clearfix">
+				    <span>产品</span>
+				    <a href="#">产品总监</a>
+				    <a href="#">产品经理</a>
+				    <img src="./image/arrow_92b8589.png" alt="">
+			    </div>				
+			    <div class="backk"></div>	
+				<div class="lista-some some" >
+					 <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>			
+				</div>
+			</div>
+			<div class="lista">
+			    <div class="index  clearfix">
+				    <span>设计</span>
+				    <a href="#">UI设计师</a>
+				    <a href="#">交互设计</a>
+				    <a href="#">网页设计师</a>
+				    <img src="./image/arrow_92b8589.png" alt="">					
+			    </div>				
+			    <div class="backk"></div>
+				<div class="lista-some some" >
+					 <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>			
+				</div>
+			</div>
+			<div class="lista">
+			    <div class="index clearfix">
+				    <span>运营</span>
+				    <a href="#">新媒体运营</a>
+				    <a href="#">编辑</a>
+				    <a href="#">数据运营</a>
+				    <img src="./image/arrow_92b8589.png" alt="">			
+			    </div>	
+			    <div class="backk"></div>			
+				<div class="lista-some some" >
+					 <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>			
+				</div>
+			</div>
+			<div class="lista">
+			    <div class="index clearfix">
+				    <span>市场与销售</span>
+				    <a href="#">市场推广</a>
+				    <a href="#">市场总监</a>
+				    <img src="./image/arrow_92b8589.png" alt="">
+			    </div>				
+			    <div class="backk"></div>
+				<div class="lista-some some" >
+					 <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>			
+				</div>
+			</div>
+			<div class="lista">
+			    <div class="index clearfix">
+				    <span>职能</span>
+				    <a href="#">HR</a>
+				    <a href="#">行政</a>
+				    <a href="#">财务</a>
+				    <a href="#">审计</a>
+				    <img src="./image/arrow_92b8589.png" alt="">
+			    </div>
+			    <div class="backk"></div>				
+				<div class="lista-some some" >
+					<h4>后端开发</h4>
+					 <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>			
+				</div>
+			</div>
+			<div class="lista">
+			    <div class="index clearfix">
+				    <span>金融</span>
+				    <a href="#">投资</a>
+				    <a href="#">融资</a>
+				    <a href="#">并购</a>
+				    <a href="#">风控</a>
+				<img src="./image/arrow_92b8589.png" alt="">
+			    </div>	
+			    <div class="backk"></div>			
+				<div class="lista-some some" >
+					 <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>	
+				     <div>
+				    	<h4>移动开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr">HTML5</a>					    
+					        <a href="#">IOS</a>
+					        <a href="#" class="sum">Android</a>
+					        <a href="#" class="sum">WP</a>
+					        <a href="#" >移动开发其他工具</a> 
+				    	</div>					    
+				    </div>	
+				    <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>
+				     <div>
+				    	<h4>后端开发</h4>
+				    	<div class="boxa">
+				    		<a href="#" class="curr sum">java</a>
+					        <a href="#" class="sum">php</a>
+					        <a href="#" class="sum">C++</a>
+					        <a href="#" class="sum">数据挖掘</a>
+					        <a href="#" class="sum">搜索算法</a>					
+					        <a href="#">精确推荐</a>
+					        <a href="#">C</a>
+					        <a href="#">C#</a>
+					        <a href="#">全栈工程师</a>
+					        <a href="#">.NET</a>
+					        <a href="#" class="curr">Hadoop</a>
+					        <a href="#">Python</a>
+					        <a href="#">Delphi</a>
+					        <a href="#">VB</a>
+					        <a href="#">Perl</a>
+				    	</div>					    
+				    </div>				
+				</div>
+			</div>			
+		</div>		
+		<div class="content-img clearfix">
+		    <div class="lunbo">
+			    <a href="#" class="lunimg"><img src="./image/Cgo.jpg" alt="">
+			    </a>
+			    <a href="#" class="lunimg "><img src="./image/CgotOVnkgK-AVFJ.png" alt="">
+			    <a href="#" class="lunimg"><img src="./image/Cgo.jpg" alt="">
+			    </a>
+			    <a href="#" class="lunimg "><img src="./image/CgotOVnkgK-AVFJ.png" alt="">
+			    </a>
+		    </div>			
+			<span class="img-left"><a href="javascript:void(0)"></a></span>
+			<span class="img-right"><a href="javascript:void(0)"></a></span>
+
+			<div class="lost">
+				<a href="#"></a>
+				<a href="#" class="lost-impor"></a>
+			</div>
+		</div>						
+	</div>
+	<div class="box-work clearfix">
+		<div class="work">
+			<a href="#" class="bottom">热门职位</a>
+			<a href="#">最新职位</a>
+		</div>
+		<div class="do-work clearfix">
+			<div class="worka">
+				<div class="worka-left clearfix">
+				    <div class="lane clearfix">
+					    <a href="#" class="makell">JAVA</a>
+					    <p>[09：24发布]</p>
+					    <div class="bleen">
+					    	<a href="#" >
+					        <img src="./image/icon_chat2_d162651.png" alt="" >
+                            <div class="hover-curren clearfix">
+                                <div class="curren-left">
+                              	   <span class="curren-textimg">
+                              	   <img src="./image/CgotOVnkYZ.jpg" alt="">
+                              	   </span>
+                              	    <span class="clearfix dosome">
+                              	        <a href="#" class="curren-text ">美女</a>
+                              	        <a href="#" class="curren-text wcolor" >招聘经理</a>
+                              	    </span>
+                              	    <p class="belong"><a href="">hi 对我发布的消息感兴趣吗？感谢就立即扫描二维码吧</a></p>
+                                </div> 
+                                <div>
+                              	    <img src="./image/canvas.png" alt="" class="curren-right">
+                                </div>  
+                            </div>
+					        </a>
+					    </div>					  
+					    <span>8K-12K</span>
+				    </div>
+				    <div class="line">
+					   <p>经验3-5年 /本科</p>
+				    </div>	
+				    <div class="server">
+				    	<span>元计算</span>
+				    	<span>linux</span>
+				    	<span>openStart</span>
+				    </div>			
+				</div>
+				<div>
+				    <div class="worka-img">
+				  	 <span><img src="./image/qaz6.jpg" alt=""></span> 
+                     <span class="worka-text">
+                     	<a href="#">上海金锣</a>
+                     	<p> 移动互联网,企业服务 上市公司 上海 </p>
+                     </span>
+				    </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix">
+				    <div class="lane clearfix">
+					    <a href="#" class="makell">JAVA</a>
+					    <p>[09：24发布]</p>
+					    <a href="#"><img src="./image/icon_chat2_d162651.png" alt=""></a>
+					    <span>8K-12K</span>
+				    </div>
+				    <div class="line">
+					   <p>经验3-5年 /本科</p>
+				    </div>	
+				    <div class="server">
+				    	<span>元计算</span>
+				    	<span>linux</span>
+				    	<span>openStart</span>
+				    </div>			
+				</div>
+				<div>
+				  <div class="worka-img">
+				  	<span><img src="./image/qaz5.jpg" alt=""></span> 
+                     <span class="worka-text">
+                     	<a href="#">上海金锣</a>
+                     	<p> 移动互联网,企业服务 上市公司 上海 </p>
+                     </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix">
+				    <div class="lane clearfix">
+					    <a href="#" class="makell">JAVA</a>
+					    <p>[09：24发布]</p>
+					    <a href="#"><img src="./image/icon_chat2_d162651.png" alt=""></a>
+					    <span>8K-12K</span>
+				    </div>
+				    <div class="line">
+					   <p>经验3-5年 /本科</p>
+				    </div>	
+				    <div class="server">
+				    	<span>元计算</span>
+				    	<span>linux</span>
+				    	<span>openStart</span>
+				    </div>			
+				</div>
+				<div>
+				  <div class="worka-img">
+				  	<span><img src="./image/qaz4.jpg" alt=""></span> 
+                     <span class="worka-text">
+                     	<a href="#">上海金锣</a>
+                     	<p> 移动互联网,企业服务 上市公司 上海 </p>
+                     </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka">
+				<div class="worka-left clearfix">
+				    <div class="lane clearfix">
+					    <a href="#" class="makell">JAVA</a>
+					    <p>[09：24发布]</p>
+					    <a href="#"><img src="./image/icon_chat2_d162651.png" alt=""></a>
+					    <span>8K-12K</span>
+				    </div>
+				    <div class="line">
+					   <p>经验3-5年 /本科</p>
+				    </div>	
+				    <div class="server">
+				    	<span>元计算</span>
+				    	<span>linux</span>
+				    	<span>openStart</span>
+				    </div>			
+				</div>
+				<div>
+				  <div class="worka-img">
+				  	<span><img src="./image/qaz3.jpg" alt=""></span> 
+                     <span class="worka-text">
+                     	<a href="#">上海金锣</a>
+                     	<p> 移动互联网,企业服务 上市公司 上海 </p>
+                     </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix">
+				    <div class="lane clearfix">
+					    <a href="#" class="makell">JAVA</a>
+					    <p>[09：24发布]</p>
+					    <a href="#"><img src="./image/icon_chat2_d162651.png" alt=""></a>
+					    <span>8K-12K</span>
+				    </div>
+				    <div class="line">
+					   <p>经验3-5年 /本科</p>
+				    </div>	
+				    <div class="server">
+				    	<span>元计算</span>
+				    	<span>linux</span>
+				    	<span>openStart</span>
+				    </div>			
+				</div>
+				<div>
+				  <div class="worka-img">
+				  	<span><img src="./image/qaz2.jpg" alt=""></span> 
+                     <span class="worka-text">
+                     	<a href="#">上海金锣</a>
+                     	<p> 移动互联网,企业服务 上市公司 上海 </p>
+                     </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix">
+				    <div class="lane clearfix">
+					    <a href="#" class="makell">JAVA</a>
+					    <p>[09：24发布]</p>
+					    <a href="#"><img src="./image/icon_chat2_d162651.png" alt=""></a>
+					    <span>8K-12K</span>
+				    </div>
+				    <div class="line">
+					   <p>经验3-5年 /本科</p>
+				    </div>	
+				    <div class="server">
+				    	<span>元计算</span>
+				    	<span>linux</span>
+				    	<span>openStart</span>
+				    </div>			
+				</div>
+				<div>
+				  <div class="worka-img">
+				  	<span><img src="./image/qaz1.jpg" alt=""></span> 
+                     <span class="worka-text">
+                     	<a href="#">上海金锣</a>
+                     	<p> 移动互联网,企业服务 上市公司 上海 </p>
+                     </span>
+				  </div>					
+				</div>
+			</div>			
+		</div>
+		<div class="seemore">
+			    <a href="#">查看更多</a>
+		</div>	
+		<div class="work">
+			<a href="#" class="bottom">热门公司</a>			
+		</div>
+		<div class="do-worka clearfix">
+			<div class="worka">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/CgYX.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/cpg7.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				<div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				</div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+			    <div class="worka-left clearfix workb">
+				    <img src="./image/cpg6.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+		        </div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/cpg5.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>	
+			<div class="worka">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/cpg4.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/cpg3.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/cpg2.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">面试评价</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>
+			<div class="worka kimi">
+				<div class="worka-left clearfix workb">
+				    <img src="./image/cpg1.jpg" alt=""class="workb-img" >
+				    <a href="#">劲牛</a>
+				    <p class="write"> 移动互联网,其他 不需要融资 </p>
+				    <p>一群农业互联网的拓荒牛，让天下没有难种</p>
+				</div>
+				<div>
+				  <div class="worka-img workb-span">
+				  	<span>
+				  	    <a href="#">11</a>
+				  	    <a href="#" class="dowrite">面试评价</a>
+				  	</span> 
+                    <span class="workb-say">
+                    	<a href="#">11</a>
+				  	    <a href="#"class="dowrite">在招职位</a>
+                    </span>
+                    <span class="workb-say">
+                    	<a href="#">68%</a>
+				  	    <a href="#" class="dowrite">简历处理率</a>
+                    </span>
+				  </div>					
+				</div>
+			</div>			
+		</div>
+		<div class="seemore">
+			<a href="#">查看更多</a>
+		</div>
+		<div class="work">
+			<a href="#" class="bottom">友情链接</a>			
+		</div>
+		<span class="smake clearfix"></span>		
+		<div class="rel clearfix" id="rel">
+			<a href="#">拉勾网</a>
+			<a href="#">大鲲</a>
+			<a href="#">招聘</a>
+			<a href="#">app下载</a>
+			<a href="#">拉勾云</a>
+			<a href="#">中大网校</a>
+			<a href="#">人人都是产品经理</a>
+			<a href="#">教室招聘</a>
+			<a href="#">新疆人才网</a>
+			<a href="#">研究报告</a>
+			<a href="#">互联网的一些事</a>
+			<a href="#">人才招聘网</a>
+			<a href="#">找工作</a>
+			<a href="#">字典</a>
+			<a href="#">拉勾网</a>
+			<a href="#">大鲲</a>
+			<a href="#">招聘</a>
+			<a href="#">app下载</a>
+			<a href="#">拉勾云</a>
+			<a href="#">中大网校</a>
+			<a href="#">人人都是产品经理</a>
+			<a href="#">教室招聘</a>
+			<a href="#">新疆人才网</a>
+			<a href="#">研究报告</a>
+			<a href="#">互联网的一些事</a>
+			<a href="#">人才招聘网</a>
+			<a href="#">找工作</a>
+			<a href="#">字典</a>
+			<a href="#">拉勾网</a>
+			<a href="#">大鲲</a>
+			<a href="#">招聘</a>
+			<a href="#">app下载</a>
+			<a href="#">拉勾云</a>
+			<a href="#">中大网校</a>
+			<a href="#">人人都是产品经理</a>
+			<a href="#">教室招聘</a>
+			<a href="#">新疆人才网</a>
+			<a href="#">研究报告</a>
+			<a href="#">互联网的一些事</a>
+			<a href="#">人才招聘网</a>
+			<a href="#">找工作</a>
+			<a href="#">字典</a>				
+		</div>		
+	</div>
+	<div class="lastover">
+		<div class="botton botton-top clearfix">
+		    <div class="box-fixed">
+			<div class="fixed-tool clearfix">
+				<img src="./image/login_officer.png" alt="">
+				<div class="span-tool">
+					<span class="fina">
+					    <p>在拉勾，发现新的职业机会</p>
+					    <p class="dohr">264915公司</p>
+					    <p>14568公司</p>
+				    </span>
+				</div>				
+				<div class="nav-bottom">
+					<a href="#" class="din">登录</a>
+					<a href=""  class="set">注册</a>
+				</div>
+			</div>
+		    </div>
+	    </div>	    
+	</div>
+	    <div class="over">
+		    <span>
+			     <img src="./image/footer_lagouc.png" alt="">
+		    </span>
+		<div class="inner">
+			<a href="#" class="va">拉勾APP<sup><img src="./image/new_v1_a261f5c.png" alt=""></sup></a>
+			<a href="#">拉勾微博</a>
+			<a href="#" class="vb">拉勾微信</a>
+			<a href="#" class="vc">拉勾小程序</a>
+			<a href="#">帮助中心</a>
+			<a href="#">联系我们</a>
+			<a href="#">招聘解决方案</a>
+			<a href="#">服务热线：4006-2828-35 (9:00-18:00)</a>
+			<div>
+			    <img src="./image/CgpFT1l.jpg" alt="" class="absoa">
+			    <img src="./image/CgpEMllDipeA.jpg" alt="" class="absob">
+			    <img src="./image/lagou-mina.png" alt="" class="absoc">
+		    </div>
+        </div>
+        <div class="copy">
+			<span>2017 Lagou</span>
+			<a href="#"> 京ICP备14023790号-2 </a>
+			<a href="#">京公网安备</a>
+			<a href="#">11010802024043号</a>
+		</div>	
+	</div>
+	<script>
+	 $(function(){
+	 	var nowIndex = $(".lost-impor").index();
+        function goLeft(index){
+              if(nowIndex ==1) { nowIndex =-1;}          
+        	    $(".lost a").eq(nowIndex+=1).addClass("lost-impor").siblings().removeClass("lost-impor");
+                $(".lunbo").stop(true,true).animate({
+        			marginLeft:"-=820px",
+        		},500,function(){
+                    var first = $(".lunimg ").first();
+        		    var last = $(".lunimg ").last();
+        		    console.log(first);
+        		    console.log(last);
+        		    first.insertAfter(last);
+        		    $(".lunbo").css("margin-left","-820px");
+        		})
+        }
+        function goRight(index){
+              if(nowIndex ==0) { nowIndex =2;}          
+        	    $(".lost a").eq(nowIndex-=1).addClass("lost-impor").siblings().removeClass("lost-impor");
+                $(".lunbo").stop(true,true).animate({
+        			marginLeft:"+=820px",
+        		},500,function(){
+                    var first = $(".lunimg ").first();
+        		    var last = $(".lunimg ").last();
+        		    console.log(first);
+        		    console.log(last);
+        		    last.insertBefore(first);
+        		    $(".lunbo").css("margin-left","-820px");
+        		})
+        }
+        $(".img-left").click(function(){
+            goLeft(nowIndex);
+        })
+        $(".img-right").click(function(){
+            goRight(nowIndex);
+        })
+	 	exportTimer();
+        function exportTimer(){
+            timer = setInterval(function(){
+                goLeft(nowIndex);
+            },5000);
+        }
+        $(".img-left").hover(function(){
+            clearInterval(timer);
+        },function(){
+            exportTimer();
+        })
+         $(".img-right").hover(function(){
+            clearInterval(timer);
+        },function(){
+            exportTimer();
+        })
+	 	// $(".img-left").click(function(){	    	
+   //          if(index ==1) { index =-1;}          
+   //      	$(".lost a").eq(index+=1).addClass("lost-impor").siblings().removeClass("lost-impor");
+   //          $(".lunbo").stop(true,true).animate({
+   //      			marginLeft:"-=820px",
+   //      		},500,function(){
+   //                  var first = $(".lunimg ").first();
+   //      		    var last = $(".lunimg ").last();
+   //      		    console.log(first);
+   //      		    console.log(last);
+   //      		    first.insertAfter(last);
+   //      		    $(".lunbo").css("margin-left","-820px");
+   //      		})
+	  //   })
+	    // $(".img-right").click(function(){	    	
+     //        if(index ==0) { index =2;}          
+     //    	$(".lost a").eq(index-=1).addClass("lost-impor").siblings().removeClass("lost-impor");
+     //        $(".lunbo").stop(true,true).animate({
+     //    			marginLeft:"+=820px",
+     //    		},500,function(){
+     //                var first = $(".lunimg ").first();
+     //    		    var last = $(".lunimg ").last();
+     //    		    console.log(first);
+     //    		    console.log(last);
+     //    		    last.insertBefore(first);
+     //    		    $(".lunbo").css("margin-left","-820px");
+     //    		})
+	    // })
+	 	$(".va").mouseenter(function(){
+	 		$(".absoa").show();
+	 	})
+	 	$(".va").mouseleave(function(){
+	 		$(".absoa").hide();
+	 	})
+	 	$(".vb").mouseenter(function(){
+	 		$(".absob").show();
+	 	})
+	 	$(".vb").mouseleave(function(){
+	 		$(".absob").hide();
+	 	})
+	 	$(".vc").mouseenter(function(){
+	 		$(".absoc").show();
+	 	})
+	 	$(".vc").mouseleave(function(){
+	 		$(".absoc").hide();
+	 	})     
+	 	$(".bleen").mouseenter(function(){
+	 		$(".bleen>a").css("padding-right","10px");
+	 		$(this).children(".hover-curren").show();
+	 		// $(".hover-curren").css("display","block");
+	 	})
+	 	$(".bleen").mouseleave(function(){
+	 		$(this).children(".hover-curren").hide();
+	 		// $(".hover-curren").css("display","block");
+	 	})
+	 	// $(".bleen").mouseout(function(){
+	 	// 	$(".hover-curren").css("display","none");
+	 	// })     
+	 	$(window).scroll(function(){
+        var bottomEndHeight = $(".over").height();
+        var bodyHeight = $("body").height();        
+        var windowHeight = $(window).height();
+        var scrollHeight = $(window).scrollTop();
+        if((scrollHeight + windowHeight) >= (bodyHeight - bottomEndHeight)) {
+          $(".botton").removeClass("botton-top");
+        }else {
+          $(".botton").addClass("botton-top");
+        }
+        })
+       var slideHeight = 5;
+	   var defHeight = $('.rel').height();
+	   if(defHeight >= slideHeight) {
+		$('.rel').css('height', slideHeight + 'px');
+		$('.smake').append('<a href="#">展开<i><img src="./image/arrow_down2_eea7e54.png" alt=""></i></a>');
+		$('.smake a').click(function() {
+			var curHeight = $('.rel').height();
+			if(curHeight == slideHeight) {
+				$('.rel').animate({
+					height: defHeight
+				}, "normal").css("overflow","visible");
+				$('.smake a').html('<a href="#">收起<i><img src="./image/arrow.jpg" alt=""></i></a> ');
+			} else {
+				$('.rel').animate({
+					height: slideHeight
+				}, "normal");
+				$('.smake a').html('<a href="#">展开<i><img src="./image/arrow_down2_eea7e54.png" alt=""></i></a>');
+			}
+			return false;
+		});
+	    }
+
+	 })
+	</script>
+</body>
+</html>
