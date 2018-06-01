@@ -55,6 +55,7 @@ a {
     line-height: 4rem;
 }
 .header-but, .header-search, .quick-question, .fina {
+	position: relative;
 	width: 100%;
 	border-bottom: 1px solid rgba(0,0,0,0.04);
 }
@@ -110,7 +111,7 @@ input::-moz-placeholder {  /* Mozilla Firefox 19+*/
 input:-ms-input-placeholder { /* Internet Explorer 10+*/ 
 　　color:#999;font-size:12px;
 }
-.new-search>a>img {
+.header-search>div>a>img {
 	width: 1.5rem;
 	height: 1.5rem;
 }
@@ -352,4 +353,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 .footer>p {
 	font-size: 1.2rem;
 	margin:0.3rem 0;
+}
+.fina_query {
+	position: absolute;
+	right: 1.5rem;
+	top: 1.3rem;
 }

@@ -1,11 +1,12 @@
-$(function(){
+window.onload=function(){
     $(".header-close").click(function(){
         $(".header-hide").hide();
     })
     $(".fina_query").click(function(){
-        var  about_query= $(".fina").val();           
-        var llstr ='<input type="text" placeholder="搜症状、疾病、医生、咨询" class="fina"><a href="./doctor.html?query='+about_query+'" class="fina_query"><img src="./image/search.png" alt=""></a>'
-        $(".new-search").html(llstr);
+        // about_query = $(".fina").val(); 
+        // console.log(about_query)          
+        // var llstr ='<input type="text" placeholder="搜症状、疾病、医生、咨询" class="fina"><a href="" class="fina_query"><img src="./image/search.png" alt=""></a>'
+        // $(".new-search").html(llstr);
     })
 	var res= {
 		"clinic_info":{
@@ -782,11 +783,26 @@ $(function(){
     ],
     "is_login":false
 	}
-    for(var l=0; l<res.health_news.length; l++){
-       var  about_query= $(".fina").val();
-       var llStr ='<input type="text" placeholder="搜症状、疾病、医生、咨询" class="fina"><a href="./doctor.html?query='+about_query+'" class="fina_query"><img src="./image/search.png" alt=""></a>'
-        $(".new-search").html(llStr);
-    }
+   
+    // for(var l=0; l<res.health_news.length; l++){
+       
+        $(".fina_query").click(function(){
+            var about_query = $(".fina").val();
+            var aboutlength = $(".fina").val().length;
+            console.log(about_query)
+             console.log(aboutlength)
+            if(aboutlength !== 0){
+                var llStr ='<a href="./doctor.html?query='+about_query+'" ><img src="./image/search.png" alt=""></a>'
+                $(".fina_query").html(llStr);
+            }else{
+                var llStr ='<a href="javascript:void(0)" ><img src="./image/search.png" alt=""></a>'
+                $(".fina_query").html(llStr);
+                return false;
+            }
+            
+        })
+        
+    // }
 	var illnessStr ="";
     for(var i=0; i<res.popular_diseases.length; i++){
         illnessStr +='<a href="javascript:void(0)">'+res.popular_diseases[i].name+'</a>'
@@ -826,4 +842,4 @@ $(function(){
 
 	// 	}
 	// })
-})
+}

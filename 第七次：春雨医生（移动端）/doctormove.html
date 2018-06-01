@@ -6,12 +6,11 @@
 	    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>春雨医生-在线咨询</title>
 	<link href="./image/index.ico" rel="SHORTCUT ICON">
+    <link rel="stylesheet" href="./css/swiper.min.css">
 	<link rel="stylesheet" href="./css/doctor.css" type="text/css">
 	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
-	<script src="./js/doctor.js"></script>
 	<script src="./js/swiper.js"></script>
     <script src="./js/swiper.min.js"></script>
-    <link rel="stylesheet" href="./css/swiper.min.css">
 </head>
 <body>
 	<div class="header-hide clearfix">
@@ -31,11 +30,13 @@
 		</div>
 	</div>
 	<div class="header-search">
-		<div class="new-search">
-			<!-- <input type="text" placeholder="搜症状、疾病、医生、咨询" class="fina">
-			<a href="./doctor.html" class="fina_query">
+		<div class="new-search" id="new-search">
+			<input type="text" placeholder="搜症状、疾病、医生、咨询" class="fina">
+		</div>
+		<div class="fina_query">
+			<a href="javascript:void(0)" >
 				<img src="./image/search.png" alt="">
-			</a> -->
+			</a>
 		</div>
 	</div>
 	<div class="quick-question">
@@ -181,6 +182,6 @@
 			京ICP证120150号  京ICP备12050281号-1  京卫网审[2014]第0335号
 		</p>
 	</div> 
-   
+	<script src="./js/doctor.js"></script>
 </body>
 </html>
